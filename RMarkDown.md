@@ -225,10 +225,13 @@ plot7<- ggplot(DataTrain,aes(x=average_token_length, fill=NoLessThan1400))
 plot7 + geom_histogram(aes(y=..density..))+geom_density(adjust=0.25,alpha=0.5)+ labs(title="Average Token Length By Share Flag", x ="Average Token Length", y = "Count")
 ```
 
-![](RMarkDown_files/figure-gfm/Plots_data4-1.png)<!-- --> 2) Another
-intersting point is to look at number of images, to see if the
-density/distribution are different across the shaing flag (1 mean “Yes”,
-0 means “No”):
+![](RMarkDown_files/figure-gfm/Plots_data4-1.png)<!-- -->
+
+2)  Another intersting point is to look at number of images, to see if
+    the density/distribution are different across the shaing flag (1
+    mean “Yes”, 0 means “No”):
+
+<!-- end list -->
 
 ``` r
 library(wesanderson)
@@ -246,10 +249,11 @@ plot8 + geom_histogram() + labs(title="Title Token Count By Share Flag",
 Here, I pick bagged tree as preferred approach. The model training and
 tuning is based on
 [**Cross-validation**](https://en.wikipedia.org/wiki/Cross-validation_\(statistics\)#:~:text=Cross%2Dvalidation%2C%20sometimes%20called%20rotation,to%20an%20independent%20data%20set.).
-This method first split the whole dataset into k folds (here I pick 10).
-Then, it trains model using 9 folds of data and tuning with 1 remaining
-fold of data. With inherent cross validation, The CV method will make
-very good use of existing data, and have relatively good result.
+This method first splits the whole dataset into k folds (here I pick
+10). Then, it trains model using 9 folds of data and tuning with 1
+remaining fold of data. With inherent cross validation, The CV method
+will make very good use of existing data, and have relatively good
+result.
 
 ``` r
 library(caret)
@@ -323,7 +327,7 @@ misClass2
 
 ## Linear Regression Model
 
-I decide to use Stepwise selection to choose the best regression model,
+I decide to use stepwise selection to choose the best regression model,
 with AIC as the fit measurement. [**Akaike Information
 Criterion**](https://en.wikipedia.org/wiki/Akaike_information_criterion)
 is a very handy measurement to compare the model fit. It starts with a
