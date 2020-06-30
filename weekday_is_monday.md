@@ -1,18 +1,20 @@
-RMarkDown
+WeekDay Report
 ================
 Xinyu Hu
-6/28/2020
+6/30/2020
 
+  - [Introduction](#introduction)
   - [About the data](#about-the-data)
   - [Summarization](#summarization)
       - [Simple Statistics](#simple-statistics)
       - [Simple Plots](#simple-plots)
+      - [Plot with Response](#plot-with-response)
   - [Modeling](#modeling)
       - [Ensemble model](#ensemble-model)
       - [Linear Regression Model](#linear-regression-model)
-      - [Model Selection](#model-selection)
+  - [Conclusion](#conclusion)
 
-\#Introduction
+# Introduction
 
 This is a practice project of ST558 course at NC State. The data is
 offered by [UCI Machine Learning
@@ -23,33 +25,43 @@ attributes, 2 non-predictive and 1 goal (reponse) field.
 The goal of this project, from my perspective, is practicing modeling
 using R with both linear model and non linear model.The purpose of this
 project is to find a relatively better way to predict *Number of Shares*
-of those articles, using the provided associated
-    statistics.
+of those articles, using the provided associated statistics.
 
 # About the data
+
+**Row-wise, this analysis is about the weekday
+    of**
+
+    ## [1] weekday_is_monday
 
 ``` r
 colnames(News)
 ```
 
-    ##  [1] "url"                           "timedelta"                     "n_tokens_title"                "n_tokens_content"             
-    ##  [5] "n_unique_tokens"               "n_non_stop_words"              "n_non_stop_unique_tokens"      "num_hrefs"                    
-    ##  [9] "num_self_hrefs"                "num_imgs"                      "num_videos"                    "average_token_length"         
-    ## [13] "num_keywords"                  "data_channel_is_lifestyle"     "data_channel_is_entertainment" "data_channel_is_bus"          
-    ## [17] "data_channel_is_socmed"        "data_channel_is_tech"          "data_channel_is_world"         "kw_min_min"                   
-    ## [21] "kw_max_min"                    "kw_avg_min"                    "kw_min_max"                    "kw_max_max"                   
-    ## [25] "kw_avg_max"                    "kw_min_avg"                    "kw_max_avg"                    "kw_avg_avg"                   
-    ## [29] "self_reference_min_shares"     "self_reference_max_shares"     "self_reference_avg_sharess"    "weekday_is_monday"            
-    ## [33] "weekday_is_tuesday"            "weekday_is_wednesday"          "weekday_is_thursday"           "weekday_is_friday"            
-    ## [37] "weekday_is_saturday"           "weekday_is_sunday"             "is_weekend"                    "LDA_00"                       
-    ## [41] "LDA_01"                        "LDA_02"                        "LDA_03"                        "LDA_04"                       
-    ## [45] "global_subjectivity"           "global_sentiment_polarity"     "global_rate_positive_words"    "global_rate_negative_words"   
-    ## [49] "rate_positive_words"           "rate_negative_words"           "avg_positive_polarity"         "min_positive_polarity"        
-    ## [53] "max_positive_polarity"         "avg_negative_polarity"         "min_negative_polarity"         "max_negative_polarity"        
-    ## [57] "title_subjectivity"            "title_sentiment_polarity"      "abs_title_subjectivity"        "abs_title_sentiment_polarity" 
+    ##  [1] "url"                           "timedelta"                     "n_tokens_title"               
+    ##  [4] "n_tokens_content"              "n_unique_tokens"               "n_non_stop_words"             
+    ##  [7] "n_non_stop_unique_tokens"      "num_hrefs"                     "num_self_hrefs"               
+    ## [10] "num_imgs"                      "num_videos"                    "average_token_length"         
+    ## [13] "num_keywords"                  "data_channel_is_lifestyle"     "data_channel_is_entertainment"
+    ## [16] "data_channel_is_bus"           "data_channel_is_socmed"        "data_channel_is_tech"         
+    ## [19] "data_channel_is_world"         "kw_min_min"                    "kw_max_min"                   
+    ## [22] "kw_avg_min"                    "kw_min_max"                    "kw_max_max"                   
+    ## [25] "kw_avg_max"                    "kw_min_avg"                    "kw_max_avg"                   
+    ## [28] "kw_avg_avg"                    "self_reference_min_shares"     "self_reference_max_shares"    
+    ## [31] "self_reference_avg_sharess"    "weekday_is_monday"             "weekday_is_tuesday"           
+    ## [34] "weekday_is_wednesday"          "weekday_is_thursday"           "weekday_is_friday"            
+    ## [37] "weekday_is_saturday"           "weekday_is_sunday"             "is_weekend"                   
+    ## [40] "LDA_00"                        "LDA_01"                        "LDA_02"                       
+    ## [43] "LDA_03"                        "LDA_04"                        "global_subjectivity"          
+    ## [46] "global_sentiment_polarity"     "global_rate_positive_words"    "global_rate_negative_words"   
+    ## [49] "rate_positive_words"           "rate_negative_words"           "avg_positive_polarity"        
+    ## [52] "min_positive_polarity"         "max_positive_polarity"         "avg_negative_polarity"        
+    ## [55] "min_negative_polarity"         "max_negative_polarity"         "title_subjectivity"           
+    ## [58] "title_sentiment_polarity"      "abs_title_subjectivity"        "abs_title_sentiment_polarity" 
     ## [61] "shares"
 
-As we know before, there are 61 fields. According to the [data
+**Column-wise, this analysis includes 61 fields.** According to the
+[data
 description](https://archive.ics.uci.edu/ml/datasets/Online+News+Popularity),
 from column \#3 to columns \#60 are the predictors. While I have no
 knowledge about each of them, I can see there are a couple of
@@ -118,20 +130,27 @@ summary(DataTrain[,3:7])
 summary(DataTrain[,47:58])
 ```
 
-    ##  global_rate_positive_words global_rate_negative_words rate_positive_words rate_negative_words avg_positive_polarity min_positive_polarity
-    ##  Min.   :0.00000            Min.   :0.000000           Min.   :0.0000      Min.   :0.0000      Min.   :0.0000        Min.   :0.00000      
-    ##  1st Qu.:0.02847            1st Qu.:0.009646           1st Qu.:0.6000      1st Qu.:0.1852      1st Qu.:0.3047        1st Qu.:0.05000      
-    ##  Median :0.03856            Median :0.015416           Median :0.7097      Median :0.2800      Median :0.3584        Median :0.10000      
-    ##  Mean   :0.03926            Mean   :0.016723           Mean   :0.6812      Mean   :0.2894      Mean   :0.3533        Mean   :0.09432      
-    ##  3rd Qu.:0.04983            3rd Qu.:0.021599           3rd Qu.:0.8000      3rd Qu.:0.3846      3rd Qu.:0.4119        3rd Qu.:0.10000      
-    ##  Max.   :0.12500            Max.   :0.092160           Max.   :1.0000      Max.   :1.0000      Max.   :1.0000        Max.   :1.00000      
-    ##  max_positive_polarity avg_negative_polarity min_negative_polarity max_negative_polarity title_subjectivity title_sentiment_polarity
-    ##  Min.   :0.0000        Min.   :-1.0000       Min.   :-1.0000       Min.   :-1.0000       Min.   :0.0000     Min.   :-1.00000        
-    ##  1st Qu.:0.6000        1st Qu.:-0.3288       1st Qu.:-0.7000       1st Qu.:-0.1250       1st Qu.:0.0000     1st Qu.: 0.00000        
-    ##  Median :0.8000        Median :-0.2511       Median :-0.5000       Median :-0.1000       Median :0.1000     Median : 0.00000        
-    ##  Mean   :0.7602        Mean   :-0.2588       Mean   :-0.5188       Mean   :-0.1055       Mean   :0.2733     Mean   : 0.06727        
-    ##  3rd Qu.:1.0000        3rd Qu.:-0.1852       3rd Qu.:-0.3000       3rd Qu.:-0.0500       3rd Qu.:0.5000     3rd Qu.: 0.13636        
-    ##  Max.   :1.0000        Max.   : 0.0000       Max.   : 0.0000       Max.   : 0.0000       Max.   :1.0000     Max.   : 1.00000
+    ##  global_rate_positive_words global_rate_negative_words rate_positive_words rate_negative_words avg_positive_polarity
+    ##  Min.   :0.00000            Min.   :0.000000           Min.   :0.0000      Min.   :0.0000      Min.   :0.0000       
+    ##  1st Qu.:0.02847            1st Qu.:0.009646           1st Qu.:0.6000      1st Qu.:0.1852      1st Qu.:0.3047       
+    ##  Median :0.03856            Median :0.015416           Median :0.7097      Median :0.2800      Median :0.3584       
+    ##  Mean   :0.03926            Mean   :0.016723           Mean   :0.6812      Mean   :0.2894      Mean   :0.3533       
+    ##  3rd Qu.:0.04983            3rd Qu.:0.021599           3rd Qu.:0.8000      3rd Qu.:0.3846      3rd Qu.:0.4119       
+    ##  Max.   :0.12500            Max.   :0.092160           Max.   :1.0000      Max.   :1.0000      Max.   :1.0000       
+    ##  min_positive_polarity max_positive_polarity avg_negative_polarity min_negative_polarity max_negative_polarity
+    ##  Min.   :0.00000       Min.   :0.0000        Min.   :-1.0000       Min.   :-1.0000       Min.   :-1.0000      
+    ##  1st Qu.:0.05000       1st Qu.:0.6000        1st Qu.:-0.3288       1st Qu.:-0.7000       1st Qu.:-0.1250      
+    ##  Median :0.10000       Median :0.8000        Median :-0.2511       Median :-0.5000       Median :-0.1000      
+    ##  Mean   :0.09432       Mean   :0.7602        Mean   :-0.2588       Mean   :-0.5188       Mean   :-0.1055      
+    ##  3rd Qu.:0.10000       3rd Qu.:1.0000        3rd Qu.:-0.1852       3rd Qu.:-0.3000       3rd Qu.:-0.0500      
+    ##  Max.   :1.00000       Max.   :1.0000        Max.   : 0.0000       Max.   : 0.0000       Max.   : 0.0000      
+    ##  title_subjectivity title_sentiment_polarity
+    ##  Min.   :0.0000     Min.   :-1.00000        
+    ##  1st Qu.:0.0000     1st Qu.: 0.00000        
+    ##  Median :0.1000     Median : 0.00000        
+    ##  Mean   :0.2733     Mean   : 0.06727        
+    ##  3rd Qu.:0.5000     3rd Qu.: 0.13636        
+    ##  Max.   :1.0000     Max.   : 1.00000
 
 ## Simple Plots
 
@@ -168,11 +187,45 @@ ggarrange(plot2, plot3, plot4, plot5, plot6, ncol = 2, nrow = 3)
 
 ![](weekday_is_monday_files/figure-gfm/Plots_data3-1.png)<!-- -->
 
+## Plot with Response
+
+1)  One interesting point is to look at the density/distribution of
+    average token length by the flag of being shared more than 1,400
+    times or not:
+
+<!-- end list -->
+
+``` r
+library(wesanderson)
+plot7<- ggplot(DataTrain,aes(x=average_token_length, fill=NoLessThan1400)) 
+plot7 + geom_histogram(aes(y=..density..))+geom_density(adjust=0.25,alpha=0.5)+ labs(title="Average Token Length By Share Flag", x ="Average Token Length", y = "Count")
+```
+
+![](weekday_is_monday_files/figure-gfm/Plots_data4-1.png)<!-- --> 2)
+Another intersting point is to look at number of images, to see if the
+density/distribution are different across the shaing flag (1 mean “Yes”,
+0 means “No”):
+
+``` r
+library(wesanderson)
+plot8<- ggplot(DataTrain,aes(x=n_tokens_title, fill=NoLessThan1400)) 
+plot8 + geom_histogram() + labs(title="Title Token Count By Share Flag",
+        x ="Title Token Count", y = "Count")
+```
+
+![](weekday_is_monday_files/figure-gfm/Plots_data5-1.png)<!-- -->
+
 # Modeling
 
 ## Ensemble model
 
-Here, I pick bagged tree as preferred approach.
+Here, I pick bagged tree as preferred approach. The model training and
+tuning is based on
+[**Cross-validation**](https://en.wikipedia.org/wiki/Cross-validation_\(statistics\)#:~:text=Cross%2Dvalidation%2C%20sometimes%20called%20rotation,to%20an%20independent%20data%20set.).
+This method first split the whole dataset into k folds (here I pick 10).
+Then, it trains model using 9 folds of data and tuning with 1 remaining
+fold of data. With inherent cross validation, The CV method will make
+very good use of existing data, and have relatively good result.
 
 ``` r
 library(caret)
@@ -196,8 +249,8 @@ bagfitTree
     ##   Accuracy   Kappa    
     ##   0.6387014  0.2772857
 
-With the bagged tree model, we can apply to the training dataset to see
-how good it
+With the bagged tree model, we can apply to the **training dataset** to
+see how good (*overfitting*) it
 is:
 
 ``` r
@@ -220,7 +273,8 @@ misClass1
 
     ## [1] 0.0009384384
 
-Also, we can apply the model to the test dataset to see how good it
+Also, we can apply the model to the **test dataset** to see how good
+(*honest check*) it
 is:
 
 ``` r
@@ -246,7 +300,13 @@ misClass2
 ## Linear Regression Model
 
 I decide to use Stepwise selection to choose the best regression model,
-with AIC as the fit measurement.
+with AIC as the fit measurement. [**Akaike Information
+Criterion**](https://en.wikipedia.org/wiki/Akaike_information_criterion)
+is a very handy measurement to compare the model fit. It starts with a
+set of candidate models, and then find the models’ corresponding AIC
+values. Then it picks the model that minimizes the information loss
+among the candidate models. It penalize number of predictors to avoid
+overfitting.
 
 ``` r
 library(MASS)
@@ -314,7 +374,8 @@ summary(step_model)
     ## Number of Fisher Scoring iterations: 4
 
 Same as bagged tree model, we can apply the final model coming out from
-stepwise select to the training dataset to see how good it
+stepwise select to the **training dataset** to see how good
+(*overfitting*) it
 is:
 
 ``` r
@@ -338,7 +399,8 @@ misClass3
 
     ## [1] 0.3554805
 
-Also, we can apply the model to the test dataset to see how good it
+Also, we can apply the model to the **test dataset** to see how good
+(*honest check*) it
 is:
 
 ``` r
@@ -362,7 +424,7 @@ misClass4
 
     ## [1] 0.3803451
 
-## Model Selection
+# Conclusion
 
 Based on my knowledge, The miss-classification rate of the test data set
 is a very solid comparison measurement. So I will tag the model with
@@ -371,10 +433,17 @@ smallest test data miss-classification rate as the final model.
 ``` r
  if(misClass2 >= misClass4){
  FinalModel <-bagfitTree
- print("The Better Model is Bagged Tree Model")
+noquote("The Better Model is Bagged Tree Model")
  }else{
  FinalModel <- step_model
-print("The Better Model is Bagged Tree Model")}
+noquote("The Better Model is (Step) Logistic Regression Model")}
 ```
 
-    ## [1] "The Better Model is Bagged Tree Model"
+    ## [1] The Better Model is (Step) Logistic Regression Model
+
+Beyond this project, I think a better approach would be replicate the
+whole process 100 times, obtain the mis-classification rate of both
+model 100 times. Then compare to see how many times that Bagged Tree
+beats logistric regression model, and how many times the other way
+around. That would be very helpful to determine the stability of both
+models performance.

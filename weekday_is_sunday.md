@@ -32,7 +32,7 @@ of those articles, using the provided associated statistics.
 **Row-wise, this analysis is about the weekday
     of**
 
-    ## [1] weekday_is_tuesday
+    ## [1] weekday_is_sunday
 
 ``` r
 colnames(News)
@@ -111,13 +111,13 @@ feature of them.
 summary(DataTrain[,3:7])
 ```
 
-    ##  n_tokens_title  n_tokens_content n_unique_tokens    n_non_stop_words   n_non_stop_unique_tokens
-    ##  Min.   : 4.00   Min.   :   0.0   Min.   :  0.0000   Min.   :   0.000   Min.   :  0.0000        
-    ##  1st Qu.: 9.00   1st Qu.: 246.0   1st Qu.:  0.4729   1st Qu.:   1.000   1st Qu.:  0.6294        
-    ##  Median :10.00   Median : 395.0   Median :  0.5404   Median :   1.000   Median :  0.6911        
-    ##  Mean   :10.47   Mean   : 537.7   Mean   :  0.6500   Mean   :   1.148   Mean   :  0.7836        
-    ##  3rd Qu.:12.00   3rd Qu.: 690.2   3rd Qu.:  0.6092   3rd Qu.:   1.000   3rd Qu.:  0.7537        
-    ##  Max.   :19.00   Max.   :7002.0   Max.   :701.0000   Max.   :1042.000   Max.   :650.0000
+    ##  n_tokens_title  n_tokens_content n_unique_tokens  n_non_stop_words n_non_stop_unique_tokens
+    ##  Min.   : 5.00   Min.   :   0.0   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000          
+    ##  1st Qu.: 9.00   1st Qu.: 250.0   1st Qu.:0.4615   1st Qu.:1.0000   1st Qu.:0.6128          
+    ##  Median :10.00   Median : 466.0   Median :0.5251   Median :1.0000   Median :0.6774          
+    ##  Mean   :10.53   Mean   : 606.4   Mean   :0.5249   Mean   :0.9712   Mean   :0.6637          
+    ##  3rd Qu.:12.00   3rd Qu.: 812.0   3rd Qu.:0.6053   3rd Qu.:1.0000   3rd Qu.:0.7500          
+    ##  Max.   :19.00   Max.   :8474.0   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000
 
 2)  Another interesting perspectives are about the NLP metrics. So I
     perform summary function on them as well (also I can check if there
@@ -131,26 +131,26 @@ summary(DataTrain[,47:58])
 ```
 
     ##  global_rate_positive_words global_rate_negative_words rate_positive_words rate_negative_words avg_positive_polarity
-    ##  Min.   :0.00000            Min.   :0.000000           Min.   :0.0000      Min.   :0.0000      Min.   :0.0000       
-    ##  1st Qu.:0.02857            1st Qu.:0.009339           1st Qu.:0.6000      1st Qu.:0.1818      1st Qu.:0.3046       
-    ##  Median :0.03902            Median :0.015204           Median :0.7117      Median :0.2778      Median :0.3563       
-    ##  Mean   :0.03955            Mean   :0.016374           Mean   :0.6872      Mean   :0.2840      Mean   :0.3511       
-    ##  3rd Qu.:0.04975            3rd Qu.:0.021540           3rd Qu.:0.8000      3rd Qu.:0.3786      3rd Qu.:0.4071       
-    ##  Max.   :0.11458            Max.   :0.135294           Max.   :1.0000      Max.   :1.0000      Max.   :0.8333       
+    ##  Min.   :0.00000            Min.   :0.00000            Min.   :0.0000      Min.   :0.0000      Min.   :0.0000       
+    ##  1st Qu.:0.02855            1st Qu.:0.01006            1st Qu.:0.6053      1st Qu.:0.1818      1st Qu.:0.3099       
+    ##  Median :0.03995            Median :0.01587            Median :0.7059      Median :0.2857      Median :0.3652       
+    ##  Mean   :0.04142            Mean   :0.01685            Mean   :0.6824      Mean   :0.2888      Mean   :0.3636       
+    ##  3rd Qu.:0.05319            3rd Qu.:0.02217            3rd Qu.:0.8000      3rd Qu.:0.3810      3rd Qu.:0.4224       
+    ##  Max.   :0.15217            Max.   :0.09104            Max.   :1.0000      Max.   :1.0000      Max.   :1.0000       
     ##  min_positive_polarity max_positive_polarity avg_negative_polarity min_negative_polarity max_negative_polarity
     ##  Min.   :0.00000       Min.   :0.0000        Min.   :-1.0000       Min.   :-1.0000       Min.   :-1.0000      
-    ##  1st Qu.:0.05000       1st Qu.:0.6000        1st Qu.:-0.3250       1st Qu.:-0.7000       1st Qu.:-0.1250      
-    ##  Median :0.10000       Median :0.8000        Median :-0.2500       Median :-0.5000       Median :-0.1000      
-    ##  Mean   :0.09469       Mean   :0.7523        Mean   :-0.2556       Mean   :-0.5119       Mean   :-0.1068      
-    ##  3rd Qu.:0.10000       3rd Qu.:1.0000        3rd Qu.:-0.1823       3rd Qu.:-0.3000       3rd Qu.:-0.0500      
-    ##  Max.   :0.70000       Max.   :1.0000        Max.   : 0.0000       Max.   : 0.0000       Max.   : 0.0000      
+    ##  1st Qu.:0.05000       1st Qu.:0.6000        1st Qu.:-0.3325       1st Qu.:-0.7500       1st Qu.:-0.1250      
+    ##  Median :0.10000       Median :0.8000        Median :-0.2611       Median :-0.5000       Median :-0.1000      
+    ##  Mean   :0.09652       Mean   :0.7827        Mean   :-0.2659       Mean   :-0.5433       Mean   :-0.1067      
+    ##  3rd Qu.:0.10000       3rd Qu.:1.0000        3rd Qu.:-0.1977       3rd Qu.:-0.3333       3rd Qu.:-0.0500      
+    ##  Max.   :1.00000       Max.   :1.0000        Max.   : 0.0000       Max.   : 0.0000       Max.   : 0.0000      
     ##  title_subjectivity title_sentiment_polarity
-    ##  Min.   :0.000      Min.   :-1.00000        
-    ##  1st Qu.:0.000      1st Qu.: 0.00000        
-    ##  Median :0.125      Median : 0.00000        
-    ##  Mean   :0.281      Mean   : 0.07056        
-    ##  3rd Qu.:0.500      3rd Qu.: 0.13636        
-    ##  Max.   :1.000      Max.   : 1.00000
+    ##  Min.   :0.0000     Min.   :-1.00000        
+    ##  1st Qu.:0.0000     1st Qu.: 0.00000        
+    ##  Median :0.2639     Median : 0.00000        
+    ##  Mean   :0.3114     Mean   : 0.08975        
+    ##  3rd Qu.:0.5000     3rd Qu.: 0.25000        
+    ##  Max.   :1.0000     Max.   : 1.00000
 
 ## Simple Plots
 
@@ -173,7 +173,7 @@ plot1<-ggplot(data=DataTrain,aes(data_channel))
 plot1 + geom_bar(color="black", fill="blue", size=2)+labs(x = "Channels")
 ```
 
-![](weekday_is_tuesday_files/figure-gfm/Plots_data1-1.png)<!-- -->
+![](weekday_is_sunday_files/figure-gfm/Plots_data1-1.png)<!-- -->
 
 2)  Another interesting point to know before modeling is LDA topics
     distribution. So perform the same exploratory visualization here:
@@ -185,7 +185,7 @@ library(ggpubr)
 ggarrange(plot2, plot3, plot4, plot5, plot6, ncol = 2, nrow = 3)
 ```
 
-![](weekday_is_tuesday_files/figure-gfm/Plots_data3-1.png)<!-- -->
+![](weekday_is_sunday_files/figure-gfm/Plots_data3-1.png)<!-- -->
 
 ## Plot with Response
 
@@ -201,7 +201,7 @@ plot7<- ggplot(DataTrain,aes(x=average_token_length, fill=NoLessThan1400))
 plot7 + geom_histogram(aes(y=..density..))+geom_density(adjust=0.25,alpha=0.5)+ labs(title="Average Token Length By Share Flag", x ="Average Token Length", y = "Count")
 ```
 
-![](weekday_is_tuesday_files/figure-gfm/Plots_data4-1.png)<!-- --> 2)
+![](weekday_is_sunday_files/figure-gfm/Plots_data4-1.png)<!-- --> 2)
 Another intersting point is to look at number of images, to see if the
 density/distribution are different across the shaing flag (1 mean “Yes”,
 0 means “No”):
@@ -213,7 +213,7 @@ plot8 + geom_histogram() + labs(title="Title Token Count By Share Flag",
         x ="Title Token Count", y = "Count")
 ```
 
-![](weekday_is_tuesday_files/figure-gfm/Plots_data5-1.png)<!-- -->
+![](weekday_is_sunday_files/figure-gfm/Plots_data5-1.png)<!-- -->
 
 # Modeling
 
@@ -237,17 +237,17 @@ bagfitTree
 
     ## Bagged CART 
     ## 
-    ## 5912 samples
+    ## 2189 samples
     ##   58 predictor
     ##    2 classes: '0', '1' 
     ## 
     ## No pre-processing
     ## Resampling: Cross-Validated (10 fold) 
-    ## Summary of sample sizes: 5320, 5320, 5321, 5321, 5320, 5321, ... 
+    ## Summary of sample sizes: 1970, 1970, 1970, 1970, 1969, 1970, ... 
     ## Resampling results:
     ## 
-    ##   Accuracy   Kappa    
-    ##   0.6229656  0.2458772
+    ##   Accuracy  Kappa    
+    ##   0.689388  0.1745435
 
 With the bagged tree model, we can apply to the **training dataset** to
 see how good (*overfitting*) it
@@ -261,8 +261,8 @@ Result1
 
     ##                                  
     ## BaggedTree_TrainingDatePrediction    0    1
-    ##                                 0 2988    1
-    ##                                 1    5 2918
+    ##                                 0  686    0
+    ##                                 1    6 1497
 
 The associated miss-classification rate is:
 
@@ -271,7 +271,7 @@ misClass1 <- 1 - sum(diag(Result1))/sum(Result1)
 misClass1
 ```
 
-    ## [1] 0.001014885
+    ## [1] 0.002740978
 
 Also, we can apply the model to the **test dataset** to see how good
 (*honest check*) it
@@ -285,8 +285,8 @@ Result2
 
     ##                              
     ## BaggedTree_TestDatePrediction   0   1
-    ##                             0 465 246
-    ##                             1 281 486
+    ##                             0  53  33
+    ##                             1 111 351
 
 The associated miss-classification rate is:
 
@@ -295,7 +295,7 @@ misClass2 <- 1 - sum(diag(Result2))/sum(Result2)
 misClass2
 ```
 
-    ## [1] 0.3565629
+    ## [1] 0.2627737
 
 ## Linear Regression Model
 
@@ -317,58 +317,57 @@ summary(step_model)
 
     ## 
     ## Call:
-    ## glm(formula = NoLessThan1400 ~ n_non_stop_unique_tokens + num_hrefs + 
-    ##     num_self_hrefs + average_token_length + data_channel_is_entertainment + 
-    ##     data_channel_is_socmed + data_channel_is_tech + data_channel_is_world + 
-    ##     kw_min_min + kw_avg_max + kw_min_avg + kw_max_avg + kw_avg_avg + 
-    ##     self_reference_min_shares + self_reference_max_shares + LDA_00 + 
-    ##     LDA_01 + LDA_02 + LDA_03 + LDA_04 + global_subjectivity + 
-    ##     global_rate_positive_words + rate_positive_words + rate_negative_words + 
-    ##     title_sentiment_polarity, family = binomial, data = DataTrain[, 
-    ##     c(3:60, 62)])
+    ## glm(formula = NoLessThan1400 ~ n_tokens_title + n_tokens_content + 
+    ##     n_non_stop_words + num_hrefs + num_self_hrefs + num_keywords + 
+    ##     data_channel_is_bus + data_channel_is_socmed + data_channel_is_tech + 
+    ##     kw_avg_max + kw_min_avg + kw_max_avg + kw_avg_avg + self_reference_min_shares + 
+    ##     self_reference_max_shares + self_reference_avg_sharess + 
+    ##     LDA_00 + global_subjectivity + global_rate_positive_words + 
+    ##     rate_positive_words + rate_negative_words + min_positive_polarity + 
+    ##     title_subjectivity + abs_title_subjectivity, family = binomial, 
+    ##     data = DataTrain[, c(3:60, 62)])
     ## 
     ## Deviance Residuals: 
     ##     Min       1Q   Median       3Q      Max  
-    ## -2.7947  -1.0439  -0.6454   1.0728   1.8802  
+    ## -2.4277  -1.1273   0.6166   0.8855   1.9333  
     ## 
     ## Coefficients:
-    ##                                 Estimate Std. Error z value Pr(>|z|)    
-    ## (Intercept)                    7.841e+02  2.814e+02   2.786 0.005329 ** 
-    ## n_non_stop_unique_tokens      -1.188e+00  3.092e-01  -3.843 0.000122 ***
-    ## num_hrefs                      1.107e-02  3.192e-03   3.468 0.000525 ***
-    ## num_self_hrefs                -1.476e-02  8.993e-03  -1.641 0.100714    
-    ## average_token_length          -2.801e-01  1.048e-01  -2.673 0.007523 ** 
-    ## data_channel_is_entertainment -2.967e-01  1.096e-01  -2.708 0.006760 ** 
-    ## data_channel_is_socmed         9.084e-01  1.376e-01   6.600 4.10e-11 ***
-    ## data_channel_is_tech           6.961e-01  1.172e-01   5.942 2.82e-09 ***
-    ## data_channel_is_world          2.227e-01  1.383e-01   1.610 0.107470    
-    ## kw_min_min                     1.748e-03  5.031e-04   3.474 0.000513 ***
-    ## kw_avg_max                    -1.489e-06  3.085e-07  -4.825 1.40e-06 ***
-    ## kw_min_avg                    -1.199e-04  3.540e-05  -3.386 0.000709 ***
-    ## kw_max_avg                    -1.188e-04  1.359e-05  -8.742  < 2e-16 ***
-    ## kw_avg_avg                     8.870e-04  7.450e-05  11.906  < 2e-16 ***
-    ## self_reference_min_shares      4.279e-06  2.894e-06   1.479 0.139266    
-    ## self_reference_max_shares      1.336e-06  9.429e-07   1.417 0.156500    
-    ## LDA_00                        -7.850e+02  2.814e+02  -2.790 0.005277 ** 
-    ## LDA_01                        -7.857e+02  2.814e+02  -2.792 0.005235 ** 
-    ## LDA_02                        -7.862e+02  2.814e+02  -2.794 0.005210 ** 
-    ## LDA_03                        -7.859e+02  2.814e+02  -2.793 0.005226 ** 
-    ## LDA_04                        -7.856e+02  2.814e+02  -2.792 0.005244 ** 
-    ## global_subjectivity            6.481e-01  3.640e-01   1.780 0.075012 .  
-    ## global_rate_positive_words    -3.593e+00  2.216e+00  -1.621 0.104985    
-    ## rate_positive_words            1.666e+00  6.049e-01   2.755 0.005870 ** 
-    ## rate_negative_words            1.480e+00  5.948e-01   2.487 0.012865 *  
-    ## title_sentiment_polarity       3.499e-01  1.073e-01   3.262 0.001106 ** 
+    ##                              Estimate Std. Error z value Pr(>|z|)    
+    ## (Intercept)                -1.767e+00  5.284e-01  -3.344 0.000826 ***
+    ## n_tokens_title              3.596e-02  2.432e-02   1.479 0.139221    
+    ## n_tokens_content            3.762e-04  1.352e-04   2.784 0.005375 ** 
+    ## n_non_stop_words           -3.900e+07  1.478e+07  -2.638 0.008339 ** 
+    ## num_hrefs                   2.159e-02  6.024e-03   3.584 0.000339 ***
+    ## num_self_hrefs             -3.939e-02  1.246e-02  -3.161 0.001573 ** 
+    ## num_keywords                6.780e-02  3.054e-02   2.220 0.026418 *  
+    ## data_channel_is_bus         5.220e-01  3.140e-01   1.662 0.096484 .  
+    ## data_channel_is_socmed      1.393e+00  3.204e-01   4.348 1.38e-05 ***
+    ## data_channel_is_tech        1.297e+00  1.676e-01   7.734 1.04e-14 ***
+    ## kw_avg_max                 -1.718e-06  5.524e-07  -3.110 0.001868 ** 
+    ## kw_min_avg                 -1.591e-04  6.202e-05  -2.565 0.010315 *  
+    ## kw_max_avg                 -6.402e-05  2.020e-05  -3.169 0.001528 ** 
+    ## kw_avg_avg                  7.148e-04  1.118e-04   6.392 1.63e-10 ***
+    ## self_reference_min_shares   2.367e-05  1.686e-05   1.404 0.160383    
+    ## self_reference_max_shares   1.055e-05  9.203e-06   1.146 0.251642    
+    ## self_reference_avg_sharess -3.598e-05  2.564e-05  -1.403 0.160558    
+    ## LDA_00                      8.434e-01  4.196e-01   2.010 0.044431 *  
+    ## global_subjectivity         9.127e-01  6.052e-01   1.508 0.131536    
+    ## global_rate_positive_words -1.376e+01  3.722e+00  -3.698 0.000217 ***
+    ## rate_positive_words         3.900e+07  1.478e+07   2.638 0.008339 ** 
+    ## rate_negative_words         3.900e+07  1.478e+07   2.638 0.008339 ** 
+    ## min_positive_polarity      -2.191e+00  7.627e-01  -2.873 0.004068 ** 
+    ## title_subjectivity          5.179e-01  1.923e-01   2.693 0.007089 ** 
+    ## abs_title_subjectivity      4.969e-01  3.070e-01   1.618 0.105590    
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
     ## (Dispersion parameter for binomial family taken to be 1)
     ## 
-    ##     Null deviance: 8194.8  on 5911  degrees of freedom
-    ## Residual deviance: 7499.9  on 5886  degrees of freedom
-    ## AIC: 7551.9
+    ##     Null deviance: 2731.5  on 2188  degrees of freedom
+    ## Residual deviance: 2467.4  on 2164  degrees of freedom
+    ## AIC: 2517.4
     ## 
-    ## Number of Fisher Scoring iterations: 10
+    ## Number of Fisher Scoring iterations: 5
 
 Same as bagged tree model, we can apply the final model coming out from
 stepwise select to the **training dataset** to see how good
@@ -384,8 +383,8 @@ Result3
 
     ##                                 
     ## StepModel_TrainingDatePrediction    0    1
-    ##                                0 2003 1112
-    ##                                1  990 1807
+    ##                                0  178  135
+    ##                                1  514 1362
 
 The associated miss-classification rate is:
 
@@ -394,7 +393,7 @@ misClass3 <- 1 - sum(diag(Result3))/sum(Result3)
 misClass3
 ```
 
-    ## [1] 0.355548
+    ## [1] 0.2964824
 
 Also, we can apply the model to the **test dataset** to see how good
 (*honest check*) it
@@ -409,8 +408,8 @@ Result4
 
     ##                             
     ## StepModel_TestDatePrediction   0   1
-    ##                            0 481 248
-    ##                            1 265 484
+    ##                            0  49  32
+    ##                            1 115 352
 
 The associated miss-classification rate is:
 
@@ -419,7 +418,7 @@ misClass4 <- 1 - sum(diag(Result4))/sum(Result4)
 misClass4
 ```
 
-    ## [1] 0.3470907
+    ## [1] 0.2682482
 
 # Conclusion
 
@@ -436,7 +435,7 @@ noquote("The Better Model is Bagged Tree Model")
 noquote("The Better Model is (Step) Logistic Regression Model")}
 ```
 
-    ## [1] The Better Model is Bagged Tree Model
+    ## [1] The Better Model is (Step) Logistic Regression Model
 
 Beyond this project, I think a better approach would be replicate the
 whole process 100 times, obtain the mis-classification rate of both
