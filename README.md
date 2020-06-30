@@ -3,10 +3,11 @@ Project 2 HomePage
 Xinyu Hu
 6/28/2020
 
+  - [Introduction](#introduction)
   - [About the data](#about-the-data)
   - [Weekday Models](#weekday-models)
 
-\#Introduction
+# Introduction
 
 This is a practice project of ST558 course at NC State. The data is
 offered by [UCI Machine Learning
