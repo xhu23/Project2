@@ -38,26 +38,18 @@ of those articles, using the provided associated statistics.
 colnames(News)
 ```
 
-    ##  [1] "url"                           "timedelta"                     "n_tokens_title"               
-    ##  [4] "n_tokens_content"              "n_unique_tokens"               "n_non_stop_words"             
-    ##  [7] "n_non_stop_unique_tokens"      "num_hrefs"                     "num_self_hrefs"               
-    ## [10] "num_imgs"                      "num_videos"                    "average_token_length"         
-    ## [13] "num_keywords"                  "data_channel_is_lifestyle"     "data_channel_is_entertainment"
-    ## [16] "data_channel_is_bus"           "data_channel_is_socmed"        "data_channel_is_tech"         
-    ## [19] "data_channel_is_world"         "kw_min_min"                    "kw_max_min"                   
-    ## [22] "kw_avg_min"                    "kw_min_max"                    "kw_max_max"                   
-    ## [25] "kw_avg_max"                    "kw_min_avg"                    "kw_max_avg"                   
-    ## [28] "kw_avg_avg"                    "self_reference_min_shares"     "self_reference_max_shares"    
-    ## [31] "self_reference_avg_sharess"    "weekday_is_monday"             "weekday_is_tuesday"           
-    ## [34] "weekday_is_wednesday"          "weekday_is_thursday"           "weekday_is_friday"            
-    ## [37] "weekday_is_saturday"           "weekday_is_sunday"             "is_weekend"                   
-    ## [40] "LDA_00"                        "LDA_01"                        "LDA_02"                       
-    ## [43] "LDA_03"                        "LDA_04"                        "global_subjectivity"          
-    ## [46] "global_sentiment_polarity"     "global_rate_positive_words"    "global_rate_negative_words"   
-    ## [49] "rate_positive_words"           "rate_negative_words"           "avg_positive_polarity"        
-    ## [52] "min_positive_polarity"         "max_positive_polarity"         "avg_negative_polarity"        
-    ## [55] "min_negative_polarity"         "max_negative_polarity"         "title_subjectivity"           
-    ## [58] "title_sentiment_polarity"      "abs_title_subjectivity"        "abs_title_sentiment_polarity" 
+    ##  [1] "url"                           "timedelta"                     "n_tokens_title"                "n_tokens_content"              "n_unique_tokens"              
+    ##  [6] "n_non_stop_words"              "n_non_stop_unique_tokens"      "num_hrefs"                     "num_self_hrefs"                "num_imgs"                     
+    ## [11] "num_videos"                    "average_token_length"          "num_keywords"                  "data_channel_is_lifestyle"     "data_channel_is_entertainment"
+    ## [16] "data_channel_is_bus"           "data_channel_is_socmed"        "data_channel_is_tech"          "data_channel_is_world"         "kw_min_min"                   
+    ## [21] "kw_max_min"                    "kw_avg_min"                    "kw_min_max"                    "kw_max_max"                    "kw_avg_max"                   
+    ## [26] "kw_min_avg"                    "kw_max_avg"                    "kw_avg_avg"                    "self_reference_min_shares"     "self_reference_max_shares"    
+    ## [31] "self_reference_avg_sharess"    "weekday_is_monday"             "weekday_is_tuesday"            "weekday_is_wednesday"          "weekday_is_thursday"          
+    ## [36] "weekday_is_friday"             "weekday_is_saturday"           "weekday_is_sunday"             "is_weekend"                    "LDA_00"                       
+    ## [41] "LDA_01"                        "LDA_02"                        "LDA_03"                        "LDA_04"                        "global_subjectivity"          
+    ## [46] "global_sentiment_polarity"     "global_rate_positive_words"    "global_rate_negative_words"    "rate_positive_words"           "rate_negative_words"          
+    ## [51] "avg_positive_polarity"         "min_positive_polarity"         "max_positive_polarity"         "avg_negative_polarity"         "min_negative_polarity"        
+    ## [56] "max_negative_polarity"         "title_subjectivity"            "title_sentiment_polarity"      "abs_title_subjectivity"        "abs_title_sentiment_polarity" 
     ## [61] "shares"
 
 **Column-wise, this analysis includes 61 fields.** According to the
@@ -130,27 +122,20 @@ summary(DataTrain[,3:7])
 summary(DataTrain[,47:58])
 ```
 
-    ##  global_rate_positive_words global_rate_negative_words rate_positive_words rate_negative_words avg_positive_polarity
-    ##  Min.   :0.00000            Min.   :0.000000           Min.   :0.0000      Min.   :0.0000      Min.   :0.0000       
-    ##  1st Qu.:0.02817            1st Qu.:0.009394           1st Qu.:0.6000      1st Qu.:0.1818      1st Qu.:0.3065       
-    ##  Median :0.03880            Median :0.015017           Median :0.7143      Median :0.2748      Median :0.3583       
-    ##  Mean   :0.03947            Mean   :0.016247           Mean   :0.6850      Mean   :0.2844      Mean   :0.3528       
-    ##  3rd Qu.:0.05000            3rd Qu.:0.021421           3rd Qu.:0.8056      3rd Qu.:0.3846      3rd Qu.:0.4097       
-    ##  Max.   :0.15549            Max.   :0.085897           Max.   :1.0000      Max.   :1.0000      Max.   :1.0000       
-    ##  min_positive_polarity max_positive_polarity avg_negative_polarity min_negative_polarity max_negative_polarity
-    ##  Min.   :0.00000       Min.   :0.0000        Min.   :-1.0000       Min.   :-1.0000       Min.   :-1.000       
-    ##  1st Qu.:0.05000       1st Qu.:0.6000        1st Qu.:-0.3262       1st Qu.:-0.7000       1st Qu.:-0.125       
-    ##  Median :0.10000       Median :0.8000        Median :-0.2500       Median :-0.5000       Median :-0.100       
-    ##  Mean   :0.09563       Mean   :0.7509        Mean   :-0.2563       Mean   :-0.5122       Mean   :-0.107       
-    ##  3rd Qu.:0.10000       3rd Qu.:1.0000        3rd Qu.:-0.1822       3rd Qu.:-0.3000       3rd Qu.:-0.050       
-    ##  Max.   :1.00000       Max.   :1.0000        Max.   : 0.0000       Max.   : 0.0000       Max.   : 0.000       
-    ##  title_subjectivity title_sentiment_polarity
-    ##  Min.   :0.0000     Min.   :-1.0000         
-    ##  1st Qu.:0.0000     1st Qu.: 0.0000         
-    ##  Median :0.1000     Median : 0.0000         
-    ##  Mean   :0.2765     Mean   : 0.0608         
-    ##  3rd Qu.:0.5000     3rd Qu.: 0.1364         
-    ##  Max.   :1.0000     Max.   : 1.0000
+    ##  global_rate_positive_words global_rate_negative_words rate_positive_words rate_negative_words avg_positive_polarity min_positive_polarity max_positive_polarity
+    ##  Min.   :0.00000            Min.   :0.000000           Min.   :0.0000      Min.   :0.0000      Min.   :0.0000        Min.   :0.00000       Min.   :0.0000       
+    ##  1st Qu.:0.02817            1st Qu.:0.009394           1st Qu.:0.6000      1st Qu.:0.1818      1st Qu.:0.3065        1st Qu.:0.05000       1st Qu.:0.6000       
+    ##  Median :0.03880            Median :0.015017           Median :0.7143      Median :0.2748      Median :0.3583        Median :0.10000       Median :0.8000       
+    ##  Mean   :0.03947            Mean   :0.016247           Mean   :0.6850      Mean   :0.2844      Mean   :0.3528        Mean   :0.09563       Mean   :0.7509       
+    ##  3rd Qu.:0.05000            3rd Qu.:0.021421           3rd Qu.:0.8056      3rd Qu.:0.3846      3rd Qu.:0.4097        3rd Qu.:0.10000       3rd Qu.:1.0000       
+    ##  Max.   :0.15549            Max.   :0.085897           Max.   :1.0000      Max.   :1.0000      Max.   :1.0000        Max.   :1.00000       Max.   :1.0000       
+    ##  avg_negative_polarity min_negative_polarity max_negative_polarity title_subjectivity title_sentiment_polarity
+    ##  Min.   :-1.0000       Min.   :-1.0000       Min.   :-1.000        Min.   :0.0000     Min.   :-1.0000         
+    ##  1st Qu.:-0.3262       1st Qu.:-0.7000       1st Qu.:-0.125        1st Qu.:0.0000     1st Qu.: 0.0000         
+    ##  Median :-0.2500       Median :-0.5000       Median :-0.100        Median :0.1000     Median : 0.0000         
+    ##  Mean   :-0.2563       Mean   :-0.5122       Mean   :-0.107        Mean   :0.2765     Mean   : 0.0608         
+    ##  3rd Qu.:-0.1822       3rd Qu.:-0.3000       3rd Qu.:-0.050        3rd Qu.:0.5000     3rd Qu.: 0.1364         
+    ##  Max.   : 0.0000       Max.   : 0.0000       Max.   : 0.000        Max.   :1.0000     Max.   : 1.0000
 
 ## Simple Plots
 
@@ -201,10 +186,13 @@ plot7<- ggplot(DataTrain,aes(x=average_token_length, fill=NoLessThan1400))
 plot7 + geom_histogram(aes(y=..density..))+geom_density(adjust=0.25,alpha=0.5)+ labs(title="Average Token Length By Share Flag", x ="Average Token Length", y = "Count")
 ```
 
-![](weekday_is_wednesday_files/figure-gfm/Plots_data4-1.png)<!-- --> 2)
-Another intersting point is to look at number of images, to see if the
-density/distribution are different across the shaing flag (1 mean “Yes”,
-0 means “No”):
+![](weekday_is_wednesday_files/figure-gfm/Plots_data4-1.png)<!-- -->
+
+2)  Another intersting point is to look at number of images, to see if
+    the density/distribution are different across the shaing flag (1
+    mean “Yes”, 0 means “No”):
+
+<!-- end list -->
 
 ``` r
 library(wesanderson)
@@ -222,10 +210,11 @@ plot8 + geom_histogram() + labs(title="Title Token Count By Share Flag",
 Here, I pick bagged tree as preferred approach. The model training and
 tuning is based on
 [**Cross-validation**](https://en.wikipedia.org/wiki/Cross-validation_\(statistics\)#:~:text=Cross%2Dvalidation%2C%20sometimes%20called%20rotation,to%20an%20independent%20data%20set.).
-This method first split the whole dataset into k folds (here I pick 10).
-Then, it trains model using 9 folds of data and tuning with 1 remaining
-fold of data. With inherent cross validation, The CV method will make
-very good use of existing data, and have relatively good result.
+This method first splits the whole dataset into k folds (here I pick
+10). Then, it trains model using 9 folds of data and tuning with 1
+remaining fold of data. With inherent cross validation, The CV method
+will make very good use of existing data, and have relatively good
+result.
 
 ``` r
 library(caret)
@@ -299,7 +288,7 @@ misClass2
 
 ## Linear Regression Model
 
-I decide to use Stepwise selection to choose the best regression model,
+I decide to use stepwise selection to choose the best regression model,
 with AIC as the fit measurement. [**Akaike Information
 Criterion**](https://en.wikipedia.org/wiki/Akaike_information_criterion)
 is a very handy measurement to compare the model fit. It starts with a
