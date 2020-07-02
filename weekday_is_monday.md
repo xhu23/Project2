@@ -38,18 +38,26 @@ of those articles, using the provided associated statistics.
 colnames(News)
 ```
 
-    ##  [1] "url"                           "timedelta"                     "n_tokens_title"                "n_tokens_content"              "n_unique_tokens"              
-    ##  [6] "n_non_stop_words"              "n_non_stop_unique_tokens"      "num_hrefs"                     "num_self_hrefs"                "num_imgs"                     
-    ## [11] "num_videos"                    "average_token_length"          "num_keywords"                  "data_channel_is_lifestyle"     "data_channel_is_entertainment"
-    ## [16] "data_channel_is_bus"           "data_channel_is_socmed"        "data_channel_is_tech"          "data_channel_is_world"         "kw_min_min"                   
-    ## [21] "kw_max_min"                    "kw_avg_min"                    "kw_min_max"                    "kw_max_max"                    "kw_avg_max"                   
-    ## [26] "kw_min_avg"                    "kw_max_avg"                    "kw_avg_avg"                    "self_reference_min_shares"     "self_reference_max_shares"    
-    ## [31] "self_reference_avg_sharess"    "weekday_is_monday"             "weekday_is_tuesday"            "weekday_is_wednesday"          "weekday_is_thursday"          
-    ## [36] "weekday_is_friday"             "weekday_is_saturday"           "weekday_is_sunday"             "is_weekend"                    "LDA_00"                       
-    ## [41] "LDA_01"                        "LDA_02"                        "LDA_03"                        "LDA_04"                        "global_subjectivity"          
-    ## [46] "global_sentiment_polarity"     "global_rate_positive_words"    "global_rate_negative_words"    "rate_positive_words"           "rate_negative_words"          
-    ## [51] "avg_positive_polarity"         "min_positive_polarity"         "max_positive_polarity"         "avg_negative_polarity"         "min_negative_polarity"        
-    ## [56] "max_negative_polarity"         "title_subjectivity"            "title_sentiment_polarity"      "abs_title_subjectivity"        "abs_title_sentiment_polarity" 
+    ##  [1] "url"                           "timedelta"                     "n_tokens_title"               
+    ##  [4] "n_tokens_content"              "n_unique_tokens"               "n_non_stop_words"             
+    ##  [7] "n_non_stop_unique_tokens"      "num_hrefs"                     "num_self_hrefs"               
+    ## [10] "num_imgs"                      "num_videos"                    "average_token_length"         
+    ## [13] "num_keywords"                  "data_channel_is_lifestyle"     "data_channel_is_entertainment"
+    ## [16] "data_channel_is_bus"           "data_channel_is_socmed"        "data_channel_is_tech"         
+    ## [19] "data_channel_is_world"         "kw_min_min"                    "kw_max_min"                   
+    ## [22] "kw_avg_min"                    "kw_min_max"                    "kw_max_max"                   
+    ## [25] "kw_avg_max"                    "kw_min_avg"                    "kw_max_avg"                   
+    ## [28] "kw_avg_avg"                    "self_reference_min_shares"     "self_reference_max_shares"    
+    ## [31] "self_reference_avg_sharess"    "weekday_is_monday"             "weekday_is_tuesday"           
+    ## [34] "weekday_is_wednesday"          "weekday_is_thursday"           "weekday_is_friday"            
+    ## [37] "weekday_is_saturday"           "weekday_is_sunday"             "is_weekend"                   
+    ## [40] "LDA_00"                        "LDA_01"                        "LDA_02"                       
+    ## [43] "LDA_03"                        "LDA_04"                        "global_subjectivity"          
+    ## [46] "global_sentiment_polarity"     "global_rate_positive_words"    "global_rate_negative_words"   
+    ## [49] "rate_positive_words"           "rate_negative_words"           "avg_positive_polarity"        
+    ## [52] "min_positive_polarity"         "max_positive_polarity"         "avg_negative_polarity"        
+    ## [55] "min_negative_polarity"         "max_negative_polarity"         "title_subjectivity"           
+    ## [58] "title_sentiment_polarity"      "abs_title_subjectivity"        "abs_title_sentiment_polarity" 
     ## [61] "shares"
 
 **Column-wise, this analysis includes 61 fields.** According to the
@@ -60,10 +68,10 @@ knowledge about each of them, I can see there are a couple of
 perspecives that we can group them.  
 1\) *Column 3 to Column 13* are all numeric predictors. Among them,
 Column 3 to Column Column 7, and column 12 are about tokens of the
-article; Column 8 to Column Column 11, and column 13 are about the
-links, image, video, and keywords of the articles.  
+article; Column 8 to Column 11, and column 13 are about the links,
+image, video, and keywords of the articles.  
 2\) *Column 14 to Column 19* are all about the topic, or channel of the
-data. So here it will tag 7 types of channels: Lifestyle, Entertainment,
+data. So here it will tag 6 types of channels: Lifestyle, Entertainment,
 Business, Social Media, Tech and World.  
 3\) *Column 20 to Column 28* are all about key word. For example, worst
 keyword, best keyword, average keyword, etc.  
@@ -133,20 +141,27 @@ summary(DataTrain[,3:7])
 summary(DataTrain[,47:58])
 ```
 
-    ##  global_rate_positive_words global_rate_negative_words rate_positive_words rate_negative_words avg_positive_polarity min_positive_polarity max_positive_polarity
-    ##  Min.   :0.00000            Min.   :0.000000           Min.   :0.0000      Min.   :0.0000      Min.   :0.0000        Min.   :0.00000       Min.   :0.0000       
-    ##  1st Qu.:0.02857            1st Qu.:0.009569           1st Qu.:0.6000      1st Qu.:0.1842      1st Qu.:0.3042        1st Qu.:0.05000       1st Qu.:0.6000       
-    ##  Median :0.03846            Median :0.015413           Median :0.7103      Median :0.2800      Median :0.3583        Median :0.10000       Median :0.8000       
-    ##  Mean   :0.03931            Mean   :0.016679           Mean   :0.6820      Mean   :0.2886      Mean   :0.3529        Mean   :0.09405       Mean   :0.7596       
-    ##  3rd Qu.:0.04969            3rd Qu.:0.021508           3rd Qu.:0.8000      3rd Qu.:0.3822      3rd Qu.:0.4115        3rd Qu.:0.10000       3rd Qu.:1.0000       
-    ##  Max.   :0.12500            Max.   :0.092160           Max.   :1.0000      Max.   :1.0000      Max.   :1.0000        Max.   :1.00000       Max.   :1.0000       
-    ##  avg_negative_polarity min_negative_polarity max_negative_polarity title_subjectivity title_sentiment_polarity
-    ##  Min.   :-1.0000       Min.   :-1.000        Min.   :-1.0000       Min.   :0.0000     Min.   :-1.00000        
-    ##  1st Qu.:-0.3277       1st Qu.:-0.700        1st Qu.:-0.1250       1st Qu.:0.0000     1st Qu.: 0.00000        
-    ##  Median :-0.2505       Median :-0.500        Median :-0.1000       Median :0.1000     Median : 0.00000        
-    ##  Mean   :-0.2575       Mean   :-0.516        Mean   :-0.1052       Mean   :0.2733     Mean   : 0.06672        
-    ##  3rd Qu.:-0.1845       3rd Qu.:-0.300        3rd Qu.:-0.0500       3rd Qu.:0.5000     3rd Qu.: 0.13636        
-    ##  Max.   : 0.0000       Max.   : 0.000        Max.   : 0.0000       Max.   :1.0000     Max.   : 1.00000
+    ##  global_rate_positive_words global_rate_negative_words rate_positive_words rate_negative_words avg_positive_polarity
+    ##  Min.   :0.00000            Min.   :0.000000           Min.   :0.0000      Min.   :0.0000      Min.   :0.0000       
+    ##  1st Qu.:0.02857            1st Qu.:0.009569           1st Qu.:0.6000      1st Qu.:0.1842      1st Qu.:0.3042       
+    ##  Median :0.03846            Median :0.015413           Median :0.7103      Median :0.2800      Median :0.3583       
+    ##  Mean   :0.03931            Mean   :0.016679           Mean   :0.6820      Mean   :0.2886      Mean   :0.3529       
+    ##  3rd Qu.:0.04969            3rd Qu.:0.021508           3rd Qu.:0.8000      3rd Qu.:0.3822      3rd Qu.:0.4115       
+    ##  Max.   :0.12500            Max.   :0.092160           Max.   :1.0000      Max.   :1.0000      Max.   :1.0000       
+    ##  min_positive_polarity max_positive_polarity avg_negative_polarity min_negative_polarity max_negative_polarity
+    ##  Min.   :0.00000       Min.   :0.0000        Min.   :-1.0000       Min.   :-1.000        Min.   :-1.0000      
+    ##  1st Qu.:0.05000       1st Qu.:0.6000        1st Qu.:-0.3277       1st Qu.:-0.700        1st Qu.:-0.1250      
+    ##  Median :0.10000       Median :0.8000        Median :-0.2505       Median :-0.500        Median :-0.1000      
+    ##  Mean   :0.09405       Mean   :0.7596        Mean   :-0.2575       Mean   :-0.516        Mean   :-0.1052      
+    ##  3rd Qu.:0.10000       3rd Qu.:1.0000        3rd Qu.:-0.1845       3rd Qu.:-0.300        3rd Qu.:-0.0500      
+    ##  Max.   :1.00000       Max.   :1.0000        Max.   : 0.0000       Max.   : 0.000        Max.   : 0.0000      
+    ##  title_subjectivity title_sentiment_polarity
+    ##  Min.   :0.0000     Min.   :-1.00000        
+    ##  1st Qu.:0.0000     1st Qu.: 0.00000        
+    ##  Median :0.1000     Median : 0.00000        
+    ##  Mean   :0.2733     Mean   : 0.06672        
+    ##  3rd Qu.:0.5000     3rd Qu.: 0.13636        
+    ##  Max.   :1.0000     Max.   : 1.00000
 
 ## Simple Plots
 
@@ -237,17 +252,17 @@ bagfitTree
 
     ## Bagged CART 
     ## 
-    ## 5328 samples
+    ## 4662 samples
     ##   58 predictor
     ##    2 classes: '0', '1' 
     ## 
     ## No pre-processing
     ## Resampling: Cross-Validated (10 fold) 
-    ## Summary of sample sizes: 4796, 4795, 4795, 4795, 4794, 4795, ... 
+    ## Summary of sample sizes: 4196, 4196, 4196, 4196, 4196, 4196, ... 
     ## Resampling results:
     ## 
     ##   Accuracy   Kappa    
-    ##   0.6387014  0.2772857
+    ##   0.6329885  0.2660003
 
 With the bagged tree model, we can apply to the **training dataset** to
 see how good (*overfitting*) it
@@ -285,8 +300,8 @@ Result2
 
     ##                              
     ## BaggedTree_TestDatePrediction   0   1
-    ##                             0 717 258
-    ##                             1 242 782
+    ##                             0 570 406
+    ##                             1 389 634
 
 The associated miss-classification rate is:
 
@@ -295,7 +310,7 @@ misClass2 <- 1 - sum(diag(Result2))/sum(Result2)
 misClass2
 ```
 
-    ## [1] 0.2501251
+    ## [1] 0.3976988
 
 ## Linear Regression Model
 
@@ -317,61 +332,57 @@ summary(step_model)
 
     ## 
     ## Call:
-    ## glm(formula = NoLessThan1400 ~ num_hrefs + num_self_hrefs + num_keywords + 
-    ##     data_channel_is_lifestyle + data_channel_is_entertainment + 
+    ## glm(formula = NoLessThan1400 ~ num_hrefs + num_self_hrefs + num_videos + 
+    ##     num_keywords + data_channel_is_lifestyle + data_channel_is_entertainment + 
     ##     data_channel_is_bus + data_channel_is_socmed + data_channel_is_tech + 
-    ##     kw_avg_min + kw_min_max + kw_max_max + kw_max_avg + kw_avg_avg + 
-    ##     self_reference_max_shares + self_reference_avg_sharess + 
-    ##     LDA_00 + LDA_01 + LDA_02 + LDA_03 + global_subjectivity + 
+    ##     kw_min_max + kw_max_max + kw_max_avg + kw_avg_avg + self_reference_max_shares + 
+    ##     self_reference_avg_sharess + LDA_00 + LDA_01 + LDA_02 + LDA_03 + 
     ##     global_sentiment_polarity + rate_negative_words + avg_negative_polarity + 
-    ##     max_negative_polarity + title_subjectivity + title_sentiment_polarity + 
-    ##     abs_title_subjectivity, family = binomial, data = DataTrain[, 
-    ##     c(3:60, 62)])
+    ##     max_negative_polarity + title_subjectivity + abs_title_subjectivity, 
+    ##     family = binomial, data = DataTrain[, c(3:60, 62)])
     ## 
     ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -3.8992  -1.0358   0.4684   1.0520   2.0821  
+    ##    Min      1Q  Median      3Q     Max  
+    ## -2.753  -1.035   0.339   1.061   1.997  
     ## 
     ## Coefficients:
     ##                                 Estimate Std. Error z value Pr(>|z|)    
-    ## (Intercept)                   -1.342e+00  2.988e-01  -4.491 7.08e-06 ***
-    ## num_hrefs                      1.427e-02  3.375e-03   4.230 2.34e-05 ***
-    ## num_self_hrefs                -1.822e-02  8.957e-03  -2.034 0.041997 *  
-    ## num_keywords                   7.865e-02  1.719e-02   4.574 4.78e-06 ***
-    ## data_channel_is_lifestyle     -2.738e-01  1.776e-01  -1.542 0.123086    
-    ## data_channel_is_entertainment -4.477e-01  1.118e-01  -4.006 6.18e-05 ***
-    ## data_channel_is_bus           -4.987e-01  1.618e-01  -3.083 0.002049 ** 
-    ## data_channel_is_socmed         8.526e-01  1.714e-01   4.975 6.53e-07 ***
-    ## data_channel_is_tech           3.237e-01  1.423e-01   2.276 0.022866 *  
-    ## kw_avg_min                     1.549e-04  7.623e-05   2.033 0.042088 *  
-    ## kw_min_max                    -1.224e-06  6.144e-07  -1.991 0.046446 *  
-    ## kw_max_max                    -7.785e-07  1.497e-07  -5.200 1.99e-07 ***
-    ## kw_max_avg                    -8.561e-05  1.084e-05  -7.901 2.77e-15 ***
-    ## kw_avg_avg                     6.329e-04  5.160e-05  12.267  < 2e-16 ***
-    ## self_reference_max_shares     -4.969e-06  2.864e-06  -1.735 0.082801 .  
-    ## self_reference_avg_sharess     1.705e-05  5.499e-06   3.100 0.001936 ** 
-    ## LDA_00                         6.748e-01  2.302e-01   2.932 0.003367 ** 
-    ## LDA_01                        -6.504e-01  2.377e-01  -2.736 0.006220 ** 
-    ## LDA_02                        -9.201e-01  2.184e-01  -4.213 2.52e-05 ***
-    ## LDA_03                        -7.330e-01  2.141e-01  -3.423 0.000619 ***
-    ## global_subjectivity            5.340e-01  3.749e-01   1.424 0.154358    
-    ## global_sentiment_polarity     -1.301e+00  5.382e-01  -2.417 0.015669 *  
-    ## rate_negative_words           -7.438e-01  2.899e-01  -2.566 0.010285 *  
-    ## avg_negative_polarity         -6.669e-01  3.722e-01  -1.792 0.073150 .  
-    ## max_negative_polarity          7.718e-01  4.171e-01   1.850 0.064256 .  
-    ## title_subjectivity             2.306e-01  1.120e-01   2.058 0.039590 *  
-    ## title_sentiment_polarity       1.833e-01  1.219e-01   1.504 0.132640    
-    ## abs_title_subjectivity         4.007e-01  1.859e-01   2.155 0.031171 *  
+    ## (Intercept)                   -1.220e+00  3.129e-01  -3.900 9.62e-05 ***
+    ## num_hrefs                      1.349e-02  3.544e-03   3.808 0.000140 ***
+    ## num_self_hrefs                -1.543e-02  9.553e-03  -1.616 0.106181    
+    ## num_videos                    -1.184e-02  7.150e-03  -1.656 0.097776 .  
+    ## num_keywords                   7.667e-02  1.833e-02   4.183 2.88e-05 ***
+    ## data_channel_is_lifestyle     -2.706e-01  1.898e-01  -1.426 0.153968    
+    ## data_channel_is_entertainment -4.546e-01  1.199e-01  -3.791 0.000150 ***
+    ## data_channel_is_bus           -5.348e-01  1.732e-01  -3.087 0.002022 ** 
+    ## data_channel_is_socmed         9.097e-01  1.828e-01   4.976 6.48e-07 ***
+    ## data_channel_is_tech           3.308e-01  1.524e-01   2.171 0.029929 *  
+    ## kw_min_max                    -1.073e-06  6.650e-07  -1.614 0.106427    
+    ## kw_max_max                    -8.224e-07  1.576e-07  -5.218 1.81e-07 ***
+    ## kw_max_avg                    -7.348e-05  1.068e-05  -6.879 6.03e-12 ***
+    ## kw_avg_avg                     6.116e-04  5.647e-05  10.831  < 2e-16 ***
+    ## self_reference_max_shares     -9.800e-06  3.210e-06  -3.053 0.002267 ** 
+    ## self_reference_avg_sharess     2.901e-05  6.465e-06   4.488 7.19e-06 ***
+    ## LDA_00                         7.129e-01  2.474e-01   2.882 0.003958 ** 
+    ## LDA_01                        -6.256e-01  2.558e-01  -2.446 0.014462 *  
+    ## LDA_02                        -8.924e-01  2.331e-01  -3.829 0.000129 ***
+    ## LDA_03                        -6.589e-01  2.297e-01  -2.868 0.004129 ** 
+    ## global_sentiment_polarity     -6.653e-01  4.531e-01  -1.469 0.141960    
+    ## rate_negative_words           -6.614e-01  2.839e-01  -2.329 0.019835 *  
+    ## avg_negative_polarity         -1.164e+00  3.616e-01  -3.218 0.001290 ** 
+    ## max_negative_polarity          1.280e+00  4.519e-01   2.832 0.004627 ** 
+    ## title_subjectivity             2.562e-01  1.184e-01   2.163 0.030529 *  
+    ## abs_title_subjectivity         3.492e-01  1.971e-01   1.772 0.076441 .  
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
     ## 
     ## (Dispersion parameter for binomial family taken to be 1)
     ## 
-    ##     Null deviance: 7384.8  on 5327  degrees of freedom
-    ## Residual deviance: 6712.8  on 5300  degrees of freedom
-    ## AIC: 6768.8
+    ##     Null deviance: 6462.6  on 4661  degrees of freedom
+    ## Residual deviance: 5859.8  on 4636  degrees of freedom
+    ## AIC: 5911.8
     ## 
-    ## Number of Fisher Scoring iterations: 4
+    ## Number of Fisher Scoring iterations: 5
 
 Same as bagged tree model, we can apply the final model coming out from
 stepwise select to the **training dataset** to see how good
@@ -387,8 +398,8 @@ Result3
 
     ##                                 
     ## StepModel_TrainingDatePrediction    0    1
-    ##                                0 1501  849
-    ##                                1  810 1502
+    ##                                0 1523  881
+    ##                                1  788 1470
 
 The associated miss-classification rate is:
 
@@ -397,7 +408,7 @@ misClass3 <- 1 - sum(diag(Result3))/sum(Result3)
 misClass3
 ```
 
-    ## [1] 0.3558559
+    ## [1] 0.3580009
 
 Also, we can apply the model to the **test dataset** to see how good
 (*honest check*) it
@@ -412,8 +423,8 @@ Result4
 
     ##                             
     ## StepModel_TestDatePrediction   0   1
-    ##                            0 610 393
-    ##                            1 349 647
+    ##                            0 622 416
+    ##                            1 337 624
 
 The associated miss-classification rate is:
 
@@ -422,7 +433,7 @@ misClass4 <- 1 - sum(diag(Result4))/sum(Result4)
 misClass4
 ```
 
-    ## [1] 0.3711856
+    ## [1] 0.3766883
 
 # Conclusion
 
@@ -431,7 +442,7 @@ is a very solid comparison measurement. So I will tag the model with
 smallest test data miss-classification rate as the final model.
 
 ``` r
- if(misClass2 >= misClass4){
+ if(misClass2 <= misClass4){
  FinalModel <-bagfitTree
 noquote("The Better Model is Bagged Tree Model")
  }else{

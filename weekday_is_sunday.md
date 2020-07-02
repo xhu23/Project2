@@ -60,10 +60,10 @@ knowledge about each of them, I can see there are a couple of
 perspecives that we can group them.  
 1\) *Column 3 to Column 13* are all numeric predictors. Among them,
 Column 3 to Column Column 7, and column 12 are about tokens of the
-article; Column 8 to Column Column 11, and column 13 are about the
-links, image, video, and keywords of the articles.  
+article; Column 8 to Column 11, and column 13 are about the links,
+image, video, and keywords of the articles.  
 2\) *Column 14 to Column 19* are all about the topic, or channel of the
-data. So here it will tag 7 types of channels: Lifestyle, Entertainment,
+data. So here it will tag 6 types of channels: Lifestyle, Entertainment,
 Business, Social Media, Tech and World.  
 3\) *Column 20 to Column 28* are all about key word. For example, worst
 keyword, best keyword, average keyword, etc.  
@@ -425,7 +425,7 @@ is a very solid comparison measurement. So I will tag the model with
 smallest test data miss-classification rate as the final model.
 
 ``` r
- if(misClass2 >= misClass4){
+ if(misClass2 <= misClass4){
  FinalModel <-bagfitTree
 noquote("The Better Model is Bagged Tree Model")
  }else{
@@ -433,7 +433,7 @@ noquote("The Better Model is Bagged Tree Model")
 noquote("The Better Model is (Step) Logistic Regression Model")}
 ```
 
-    ## [1] The Better Model is Bagged Tree Model
+    ## [1] The Better Model is (Step) Logistic Regression Model
 
 Beyond this project, I think a better approach would be replicate the
 whole process 100 times, obtain the mis-classification rate of both
