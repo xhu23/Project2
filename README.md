@@ -5,6 +5,7 @@ Xinyu Hu
 
   - [Introduction](#introduction)
   - [About the data](#about-the-data)
+  - [Model Selection](#model-selection)
   - [Weekday Models](#weekday-models)
 
 # Introduction
@@ -54,8 +55,37 @@ made for modeling training and testing. Last but not least, I choose to
 predict a binary response, which is dividing the shares into two groups
 (\< 1400 and \>=1400).
 
+# Model Selection
+
+For Ensembled Model, I chose the [Bagged Tree
+Model](https://en.wikipedia.org/wiki/Bootstrap_aggregating). Bagged Tree
+is used because it can reduce the variance of a regular decision tree.
+It create sseveral subsets of data from training sample chosen randomly
+with replacement, and each is used to train their decision trees.
+Average of all the predictions from different trees are used which is
+more robust than a single decision tree. It improves the stability and
+accuracy of statistical classification. Inside Bagged Tree, I use Cross
+Validation (see more details in each report).
+
+For Regression Model, I used [Logistic
+Regression](https://towardsdatascience.com/logistic-regression-detailed-overview-46c4da4303bc).
+This is mainly because the response is a binary variable. Using Logistic
+Regression, instead of regular regression, can meet the prediction
+assumption better. In addtion, instead of handpicking predictors, I use
+stepwise selection based on AIC to make decisions on including/excluding
+predictors. This will give me a quite good predictive model on the
+response.
+
+Lastly, I compare the model from Bagged Tree and Logistic Regression by
+their performance on Test dataset. And made decision on which one is
+better.
+
 # Weekday Models
 
+Description: Here I perform both Bagged Tree Model and Logistic
+regression model on 7 weekdays. You should be able to see each report by
+clicking on the links provided below. In each report, Simple statistics
+and Plots are also provided.  
 The analysis for [Monday is available here](weekday_is_monday.md).  
 The analysis for [Tuesday is available here](weekday_is_tuesday.md).  
 The analysis for [Wednesday is available
